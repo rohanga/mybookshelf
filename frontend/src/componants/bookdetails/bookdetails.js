@@ -6,7 +6,7 @@ import { getBook } from "../../store/action/action";
 import './bookdetails.css';
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-const socket = io('http://localhost:5000');
+const socket = io('https://bookshelf-backend-my1t.onrender.com');
 
 const BookDetailPage = memo(() => {
   const { bookId } = useParams();
@@ -39,7 +39,7 @@ const BookDetailPage = memo(() => {
     const commentData = { userId: loggedInUserId, content: newComment };
 
     try {
-      await axios.post(`http://localhost:5000/comment/${bookId}/comments`, commentData);
+      await axios.post(`${process.env.REACT_APP_HOST_URL}/comment/${bookId}/comments`, commentData);
       setNewComment(''); // Clear input after submitting
     } catch (error) {
       console.error('Error posting comment:', error);

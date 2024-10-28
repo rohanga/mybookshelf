@@ -2,7 +2,7 @@
   
 export const getBook = (bookId) => dispatch => {
     console.log("Fetching book with ID:", bookId);
-    return fetch(`http://localhost:5000/books/getbook/${bookId}`)
+    return fetch(`${process.env.REACT_APP_HOST_URL}/books/getbook/${bookId}`)
       .then(res => res.json())
       .then(response => {
         dispatch({

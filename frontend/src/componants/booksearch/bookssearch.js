@@ -21,7 +21,7 @@ function SearchBooks({ userId,onAddBook }) {
 
   const checkBookExists = async (bookId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/books/${userId}`);
+      const response = await axios.get(`${process.env.REACT_APP_HOST_URL}/books/${userId}`);
       const existingBooks = response.data;
       console.log("existingBooks====>",existingBooks)
       return existingBooks.some(book => book.bookId === bookId);
@@ -53,7 +53,7 @@ function SearchBooks({ userId,onAddBook }) {
         averageRating: book.volumeInfo.averageRating || 0,
       };
 
-      await axios.post('http://localhost:5000/books/add', bookData);
+      await axios.post(`${process.env.REACT_APP_HOST_URL}/books/add`, bookData);
       console.log("bookData===========>",bookData)
       onAddBook(bookData);
 

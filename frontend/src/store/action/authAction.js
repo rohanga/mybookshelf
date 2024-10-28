@@ -4,7 +4,7 @@ export const signup = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: 'SIGNUP_REQUEST' });
 
-    const response = await axios.post('http://localhost:5000/signup', { email, password });
+    const response = await axios.post(`${process.env.REACT_APP_HOST_URL}/signup`, { email, password });
     console.log("&&&&&&&&&&&&&&&&&&&&&&>", response.data)
     dispatch({
       type: 'SIGNUP_SUCCESS',
@@ -24,7 +24,7 @@ export const signup = (email, password) => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: 'LOGIN_REQUEST' });
-    const response = await axios.post('http://localhost:5000/login', { email, password });
+    const response = await axios.post(`${process.env.REACT_APP_HOST_URL}/login`, { email, password });
 
     dispatch({
       type: 'LOGIN_SUCCESS',

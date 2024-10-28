@@ -29,7 +29,7 @@ export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 // Action to fetch currently reading books
 export const fetchCurrentlyReadingBooks = (userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:5000/books/currentlyreading/${userId}`);
+    const response = await axios.get(`${process.env.REACT_APP_HOST_URL}/books/currentlyreading/${userId}`);
     const filteredData = response.data.filter(item => item.book !== null);
     dispatch({
       type: FETCH_CURRENTLY_READING_SUCCESS,
@@ -46,7 +46,7 @@ export const fetchCurrentlyReadingBooks = (userId) => async (dispatch) => {
 // Action to update progress of a book
 export const updateProgress = (userId, bookId, progress, comment) => async (dispatch) => {
   try {
-    const response = await axios.post('http://localhost:5000/books/update-progress', { userId, bookId, progress, comment });
+    const response = await axios.post(`${process.env.REACT_APP_HOST_URL}/books/update-progress`, { userId, bookId, progress, comment });
     dispatch({
       type: UPDATE_PROGRESS,
       payload: response.data
@@ -59,7 +59,7 @@ export const updateProgress = (userId, bookId, progress, comment) => async (disp
 // Action to mark a book as finished
 export const markAsFinished = (userId, bookId) => async (dispatch) => {
   try {
-    await axios.post('http://localhost:5000/books/mark-as-finished', { userId, bookId });
+    await axios.post(`${process.env.REACT_APP_HOST_URL}/books/mark-as-finished`, { userId, bookId });
     dispatch(fetchCurrentlyReadingBooks(userId)); // Fetch books again after marking as finished
   } catch (error) {
     console.error('Error marking book as finished:', error);
@@ -71,8 +71,8 @@ export const markAsFinished = (userId, bookId) => async (dispatch) => {
 export const fetchBooks = (userId) => async (dispatch) => {
   dispatch({ type: FETCH_BOOKS_REQUEST });
   try {
-    const response = await axios.get(`http://localhost:5000/books/${userId}`);
-    const currentlyReadingResponse = await axios.get(`http://localhost:5000/books/currentlyreading/${userId}`);
+    const response = await axios.get(`${process.env.REACT_APP_HOST_URL}/books/${userId}`);
+    const currentlyReadingResponse = await axios.get(`${process.env.REACT_APP_HOST_URL}/books/currentlyreading/${userId}`);
     const readingBooksSet = currentlyReadingResponse.data.map((x) => x.book.bookId);
     dispatch({ type: FETCH_BOOKS_SUCCESS, payload: { books: response.data, currentlyReading: readingBooksSet } });
   } catch (error) {
@@ -81,14 +81,14 @@ export const fetchBooks = (userId) => async (dispatch) => {
 };
 
 export const addBook = (book) => ({
-  
+
   type: ADD_BOOK,
   payload: book,
 });
 
 export const updateBook = (bookId, updates) => async (dispatch) => {
   try {
-    await axios.put(`http://localhost:5000/books/update/${bookId}`, updates);
+    await axios.put(`${process.env.REACT_APP_HOST_URL}/books/update/${bookId}`, updates);
     dispatch({
       type: UPDATE_BOOK,
       payload: { bookId, updates },
@@ -100,7 +100,7 @@ export const updateBook = (bookId, updates) => async (dispatch) => {
 
 export const deleteBook = (bookId) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:5000/books/delete/${bookId}`);
+    await axios.delete(`${process.env.REACT_APP_HOST_URL}/books/delete/${bookId}`);
     dispatch({
       type: DELETE_BOOK,
       payload: bookId,
@@ -112,7 +112,7 @@ export const deleteBook = (bookId) => async (dispatch) => {
 
 export const markAsCurrentlyReading = (userId, bookId) => async (dispatch) => {
   try {
-    await axios.post('http://localhost:5000/books/markcurrentlyreading', { userId, bookId });
+    await axios.post(`${process.env.REACT_APP_HOST_URL}/books/markcurrentlyreading`, { userId, bookId });
     dispatch({
       type: MARK_AS_CURRENTLY_READING,
       payload: bookId,
@@ -136,7 +136,7 @@ export const searchBooks = (searchQuery) => async (dispatch) => {
 
 export const addBookRequest = (book, userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:5000/books/${userId}`);
+    const response = await axios.get(`${process.env.REACT_APP_HOST_URL}/books/${userId}`);
     const existingBooks = response.data;
     
     if (existingBooks.some(existingBook => existingBook.bookId === book.id)) {
@@ -153,7 +153,7 @@ export const addBookRequest = (book, userId) => async (dispatch) => {
       averageRating: book.volumeInfo.averageRating || 0,
     };
 
-    await axios.post('http://localhost:5000/books/add', bookData);
+    await axios.post(`${process.env.REACT_APP_HOST_URL}/books/add`, bookData);
     dispatch({ type: ADD_BOOK_REQUEST, payload: bookData });
     dispatch({ type: SET_SUCCESS_MESSAGE, payload: `${book.volumeInfo.title} has been added to your bookshelf!` });
   } catch (error) {
