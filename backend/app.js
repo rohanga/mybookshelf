@@ -20,7 +20,7 @@ app.use(cors());
 // Create a new Socket.IO server instance
 const io = new Server(server, {
   cors: {
-     origin: `https://mybookshelf-o95u.onrender.com:${frontendport}`, // Update this to your frontend origin
+    origin: 'https://mybookshelf-o95u.onrender.com', // Update this to your frontend origin
     methods: ["GET", "POST"],
   }
 });

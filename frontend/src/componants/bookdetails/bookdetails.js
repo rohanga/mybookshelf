@@ -6,7 +6,8 @@ import { getBook } from "../../store/action/action";
 import './bookdetails.css';
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-const socket = io('https://bookshelf-backend-my1t.onrender.com');
+const socket = io(process.env.REACT_APP_HOST_URL);
+
 
 const BookDetailPage = memo(() => {
   const { bookId } = useParams();
