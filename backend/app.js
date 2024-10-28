@@ -8,7 +8,7 @@ const router = require("./router_config");
 
 const app = express();
 const port = process.env.PORT || 5000;
-const frontendport = 3000
+const frontendport = 10000
 
 const server = http.createServer(app);
 
@@ -20,7 +20,7 @@ app.use(cors());
 // Create a new Socket.IO server instance
 const io = new Server(server, {
   cors: {
-    origin: `http://localhost:${frontendport}`, // Update this to your frontend origin
+     origin: `https://mybookshelf-o95u.onrender.com:${frontendport}`, // Update this to your frontend origin
     methods: ["GET", "POST"],
   }
 });
