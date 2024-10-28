@@ -1,0 +1,105 @@
+.loginsection {
+  width: 100vw;
+  height: 100vh;
+  background-color:#A7D7C5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative; /* Needed for positioning pseudo-elements */
+  overflow: hidden; /* Prevent overflow of pseudo-elements */
+}
+.error-message{
+color: red;
+}
+/* Pseudo-elements for the rotated boxes */
+.loginsection::before,
+.loginsection::after {
+  content: '';
+  position: absolute;
+  border-radius: 100px;
+  width: 600px; /* Width of the box */
+  height: 600px; /* Height of the box */
+  background-color: #8383d4; /* Background color of the boxes */
+  transform: rotate(45deg); /* Rotates the boxes to form a diamond shape */
+  z-index: 1; /* Ensures boxes are behind the login form */
+}
+
+/* Top-left box */
+.loginsection::before {
+  top: -50px; /* Adjusted to move box slightly outside */
+  left: -50px; /* Adjusted to move box slightly outside */
+  background-color: #C1E3D6; /* Different color for the top-left box */
+}
+
+/* Bottom-right box */
+.loginsection::after {
+  bottom: -50px; /* Adjusted to move box slightly outside */
+  right: -50px; /* Adjusted to move box slightly outside */
+  background-color:#C1E3D6; /* Different color for the bottom-right box */
+}
+
+.login {
+  padding: 20px;
+  background-color:#F6FBF9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 28px;
+  width: 40%;
+  text-align: center;
+  position: relative; /* To stack it above the pseudo-elements */
+  z-index: 2; /* Ensures the login form is above the boxes */
+}
+
+.login input {
+  padding: 19px;
+  margin: 10px 0;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.login button {
+  padding: 17px 70px;
+  background-color:#84C7AE;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: larger;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.login button:hover {
+  background-color: #59a88a;;
+}
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .login {
+      width: 60%;
+    }
+  
+    .login input {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login {
+      width: 80%;
+    }
+  
+    .login input {
+      width: 100%;
+    }
+  
+    .login button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

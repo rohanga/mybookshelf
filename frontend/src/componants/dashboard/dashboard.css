@@ -1,0 +1,179 @@
+.dashboard {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.book-card {
+  display: flex;
+  background-color: #f9f9f9;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-thumbnail {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.book-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.book-details {
+  flex: 2;
+  margin-left: 20px;
+}
+
+.book-title {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.book-author {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.progress-container {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-bar-fill {
+  height: 10px;
+  background-color: #76c7c0;
+  transition: width 0.3s ease;
+}
+
+.comment-section {
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 0.9em;
+  resize: none;
+}
+
+.finish-button {
+  background-color: #76c7c0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.finish-button:hover {
+  background-color: #5da399;
+}
+
+.update-progress {
+  margin-top: 10px;
+}
+.banner {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  background-color: #442d2d7d;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes the image cover the entire banner area */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Send image behind the text */
+}
+
+.banner-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.banner-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+input[type='number'] {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+}
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .dashboard {
+      width: 90%;
+    }
+  
+    .dashboard li {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dashboard {
+      width: 95%;
+    }
+  
+    .dashboard li {
+      font-size: 12px;
+      padding: 15px;
+    }
+  }
+  

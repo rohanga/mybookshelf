@@ -1,0 +1,143 @@
+/* Bookshelf.css */
+
+/* Book Animation Banner */
+
+/* Bookshelf CSS */
+
+/* Banner Section */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  background-color: #442d2d7d;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes the image cover the entire banner area */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Send image behind the text */
+}
+
+.banner-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.banner-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+/* Rest of the bookshelf styles */
+.bookshelf-container {
+  margin-top: 20px;
+}
+
+.search-bar {
+  margin: 20px 0;
+}
+
+.no-books-message {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+
+/* Search Bar */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+/* No Books Message */
+.no-books-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Book Table */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.book-table th, .book-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.book-cover {
+  max-width: 50px;
+  border-radius: 4px;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.filled {
+  color: gold;
+}
+
+/* Review Textarea */
+.review-textarea {
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  resize: none;
+}
+
+/* Action Buttons */
+.action-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-button.remove {
+  background-color: #dc3545;
+}
+
+.action-button:hover {
+  opacity: 0.9;
+}
+
+
+.currently-reading-text {
+  color: green; /* Or any color you prefer */
+  font-weight: bold;
+}
+
+.pointer:hover{
+  cursor: pointer;
+  color: #007bff;
+}

@@ -1,0 +1,164 @@
+.book-search {
+  padding: 20px;
+}
+
+.search-input {
+  width: 25%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-radius: 9px;
+
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #1BC5BD;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 9px;
+  cursor: pointer;
+  margin-left: 10px;
+
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.book-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+
+
+
+
+.book-thumbnail {
+  width: 128px;
+  height: 192px;
+  object-fit: cover;
+}
+
+.book-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+
+.book-title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #666;
+}
+
+
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .book-search {
+      width: 90%;
+    }
+  
+    .book-search input {
+      width: 80%;
+    }
+  
+    .book-search button {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .book-search {
+      width: 95%;
+    }
+  
+    .book-search input {
+      width: 100%;
+    }
+  
+    .book-search button {
+      width: 100%;
+    }
+  }
+  
+  .book-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .book-table th,
+  .book-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .book-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .book-item {
+    transition: background-color 0.2s;
+  }
+  
+  .book-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .book-thumbnail {
+    width: 50px; /* Adjust size as needed */
+  }
+  

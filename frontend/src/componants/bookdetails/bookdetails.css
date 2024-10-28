@@ -1,0 +1,132 @@
+/* BookDetailPage.css */
+
+.book-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-info {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .book-image {
+    max-width: 200px;
+    margin-right: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-meta {
+    flex: 1;
+  }
+  
+  .book-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .book-author {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .book-rating {
+    font-size: 16px;
+    color: #ff9900;
+    margin-bottom: 15px;
+  }
+  
+  .book-description {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  .comments-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .comments-section h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .comments-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+  
+  .comment {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 70%;
+  }
+  
+  .my-comment {
+    background-color: #e0f7fa;
+    align-self: flex-end; /* Align to the right for logged-in user */
+    text-align: right;
+  }
+  
+  .comment:not(.my-comment) {
+    background-color: #f1f1f1;
+    align-self: flex-start; /* Align to the left for other users */
+  }
+  
+  .comment-author {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .comment-content {
+    font-size: 14px;
+    color: #333;
+    word-wrap: break-word; /* Ensure long words break properly */
+  }
+  
+  .comment-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .comment-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .comment-input button {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .comment-input button:hover {
+    background-color: #0056b3;
+  }
+  
