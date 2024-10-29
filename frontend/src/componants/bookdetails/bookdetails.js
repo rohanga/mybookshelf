@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getBook } from "../../store/action/action";
 import './bookdetails.css';
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { PuffLoader } from 'react-spinners'; // Import the spinner
 
 const socket = io(process.env.REACT_APP_HOST_URL);
 
@@ -60,7 +61,13 @@ const BookDetailPage = memo(() => {
     }
   }, [commentsList]);
 
-  if (!selectedBook) return <div>Loading...</div>;
+  if (!selectedBook) return (
+    <div className="loading-container">
+      <PuffLoader color="#007bff"  size={50} />
+      <p>Loading book details...</p>
+    </div>
+  );
+
 
   return (
     <div className="book-detail-container">
@@ -68,9 +75,9 @@ const BookDetailPage = memo(() => {
         <img src={selectedBook.thumbnail} alt={selectedBook.title} className="book-image" />
         <div className="book-meta">
           <h1 className="book-title">{selectedBook.title}</h1>
-          <p className="book-author">by {selectedBook.author}</p>
-          <p className="book-rating">Rating: {selectedBook.rating}/5</p>
-          <p className="book-description">{selectedBook.description}</p>
+          <p className="book-author">by {selectedBook.authors.join(",")}</p>
+          <p className="book-rating">Rating: {selectedBook.averageRating}</p>
+      
         </div>
       </div>
 

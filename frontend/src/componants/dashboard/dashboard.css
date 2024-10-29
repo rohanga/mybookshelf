@@ -176,4 +176,17 @@ input[type='number'] {
       padding: 15px;
     }
   }
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height for loading screen */
+  }
+  
+  .loading-container p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #007bff; /* Same color as the spinner */
+  }
   

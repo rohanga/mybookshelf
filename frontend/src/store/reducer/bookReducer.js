@@ -30,17 +30,17 @@ const initialState = {
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CURRENTLY_READING:
-      return { ...state, loading: true };
+      return { ...state, loading: true ,action:action.type};
     case FETCH_CURRENTLY_READING_SUCCESS:
-      return { ...state, loading: false, currentlyReading: action.payload };
+      return { ...state, loading: false, currentlyReading: action.payload,action:action.type };
     case FETCH_CURRENTLY_READING_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, loading: false, error: action.payload ,action:action.type};
     case UPDATE_PROGRESS:
-      return { ...state, currentlyReading: action.payload };
+      return { ...state, currentlyReading: action.payload ,action:action.type};
     case MARK_AS_FINISHED:
-      return { ...state, currentlyReading: action.payload };
+      return { ...state, currentlyReading: action.payload,action:action.type };
     case FETCH_BOOKS_REQUEST:
-      return { ...state, loading: true, error: null };
+      return { ...state, loading: true, error: null,action:action.type };
 
     case FETCH_BOOKS_SUCCESS:
       return {
@@ -48,21 +48,24 @@ const bookReducer = (state = initialState, action) => {
         loading: false,
         books: action.payload.books,
         currentlyReading: action.payload.currentlyReading,
+        action:action.type
       };
 
     case FETCH_BOOKS_FAILURE:
-      return { ...state, loading: false, error: action.error };
+      return { ...state, loading: false, error: action.error,action:action.type };
 
     case ADD_BOOK:
       console.log("ADDBOOK====>",state)
       return {
         ...state,
         books: [...state?.books, action.payload],
+        action:action.type
       };
 
     case UPDATE_BOOK:
       return {
         ...state,
+        action:action.type,
         books: state.books.map((book) =>
           book._id === action.payload.bookId
             ? { ...book, ...action.payload.updates }
@@ -74,23 +77,25 @@ const bookReducer = (state = initialState, action) => {
       return {
         ...state,
         books: state.books.filter((book) => book._id !== action.payload),
+        action:action.type
       };
 
     case MARK_AS_CURRENTLY_READING:
       return {
         ...state,
         currentlyReading: [...state.currentlyReading, action.payload],
+        action:action.type
       };
 
 
     case SEARCH_BOOKS:
-      return { ...state, books: action.payload };
+      return { ...state, books: action.payload,action:action.type };
     case ADD_BOOK_REQUEST:
-      return { ...state, books: [...state.books, action.payload] };
+      return { ...state, books: [...state.books, action.payload],action:action.type };
     case SET_SUCCESS_MESSAGE:
-      return { ...state, successMessage: action.payload };
+      return { ...state, successMessage: action.payload ,action:action.type};
     case SET_ERROR_MESSAGE:
-      return { ...state, errorMessage: action.payload };
+      return { ...state, errorMessage: action.payload ,action:action.type};
 
     default:
       return state;

@@ -10,12 +10,13 @@ import {
   deleteBook,
   markAsCurrentlyReading,
 } from '../../store/action/bookAction';
+import { PuffLoader } from 'react-spinners'; // Import the spinner
 
 // Banner image URL
 const bannerImage = 'https://png.pngtree.com/thumb_back/fw800/background/20230615/pngtree-collection-of-books-on-a-shelf-image_2908926.jpg';
 
 function Bookshelf() {
-  const userId = localStorage.getItem('userId'); // Get user ID from local storage
+  const userId = localStorage.getItem('userId');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,7 +30,6 @@ function Bookshelf() {
     if (userId) {
       dispatch(fetchBooks(userId));
     } else {
-      // Handle case when userId is not found (e.g., redirect to login)
       navigate('/login');
     }
   }, [dispatch, userId, navigate]);
@@ -42,7 +42,7 @@ function Bookshelf() {
   // Function to update book details
   const updateBookDetails = async (bookId, updates) => {
     await dispatch(updateBook(bookId, updates));
-    dispatch(fetchBooks(userId)); // Re-fetch books after update
+    dispatch(fetchBooks(userId));
   };
 
   // Debounced function to update book details
@@ -67,13 +67,15 @@ function Bookshelf() {
   // Function to delete a book from the shelf
   const deleteBookFromShelf = async (bookId) => {
     await dispatch(deleteBook(bookId));
-    dispatch(fetchBooks(userId)); // Re-fetch books after deletion
+    dispatch(fetchBooks(userId));
   };
 
   // Function to mark a book as currently reading
   const markAsReading = (bookId) => {
-    dispatch(markAsCurrentlyReading(userId, bookId));
-    dispatch(fetchBooks(userId)); // Re-fetch books after marking
+    if (!isCurrentlyReading(bookId)) {
+      dispatch(markAsCurrentlyReading(userId, bookId));
+    }
+    dispatch(fetchBooks(userId));
   };
 
   // Navigate to book details page
@@ -93,10 +95,15 @@ function Bookshelf() {
   };
 
   // Display loading or error messages
-  if (loading) return <p>Loading books...</p>;
+  if (loading) return (
+    <div className="loading-container">
+      <PuffLoader color="#007bff" loading={loading} size={50} />
+      <p>Loading your books...</p>
+    </div>
+  );
+
   if (error) return <p>Error loading books: {error.message}</p>;
 
-  // Ensure books is an array
   const booksToDisplay = books || [];
 
   return (
@@ -115,7 +122,6 @@ function Bookshelf() {
         <BookSearch userId={userId} onAddBook={addBookToBookshelf} />
       </div>
 
-      {/* Check if books exist */}
       {booksToDisplay.length === 0 ? (
         <div className="no-books-message">
           <h3>No books available, please search for something!</h3>
@@ -138,9 +144,8 @@ function Bookshelf() {
                 <td>
                   <img src={book.thumbnail} alt={book.title} className="book-cover" />
                 </td>
-                <td className="pointer"onClick={() => handleBookClick(book.bookId)}>{book.title}</td>
+                <td className="pointer" onClick={() => handleBookClick(book.bookId)}>{book.title}</td>
                 <td>{(book.authors || ['Unknown Author']).join(", ")}</td>
-
                 <td>
                   <div className="star-rating">
                     {[1, 2, 3, 4, 5].map((star) => (
@@ -170,9 +175,11 @@ function Bookshelf() {
                       Mark as Currently Reading
                     </button>
                   )}
-                  <button onClick={() => deleteBookFromShelf(book._id)} className="action-button remove">
-                    Remove
-                  </button>
+                  {!isCurrentlyReading(book.bookId) && (
+                    <button onClick={() => deleteBookFromShelf(book._id)} className="action-button remove">
+                      Remove
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
