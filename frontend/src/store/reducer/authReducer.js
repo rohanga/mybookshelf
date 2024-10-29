@@ -8,20 +8,20 @@ const initialState = {
   export  default (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN_REQUEST':
-            return { ...state, loading: true, error: null };
+            return { ...state, loading: true, error: null ,action:action.type};
         case 'LOGIN_SUCCESS':
             
-            return { ...state, loading: false, userInfo: action.payload };
+            return { ...state, loading: false, userInfo: action.payload ,action:action.type};
         case 'LOGIN_FAIL':
-            return { ...state, loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload ,action:action.type};
         case 'LOGOUT':
-            return { ...state, userInfo: null };
+            return { ...state, userInfo: null ,action:action.type};
         case 'SIGNUP_REQUEST':
-            return { ...state, loading: true };
+            return { ...state, loading: true ,action:action.type};
         case 'SIGNUP_SUCCESS':
-            return { ...state, loading: false, userInfo: action.payload.data };
+            return { ...state, loading: false, userInfo: action.payload.data ,action:action.type};
         case 'SIGNUP_FAILURE':
-            return { ...state, loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload ,action:action.type};
         
         case 'LOGOUT':
                 return {

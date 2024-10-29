@@ -18,9 +18,12 @@ const Login = ({ setIsAuthenticated }) => {
 
   useEffect(() => {
     if (userInfo) {
+      console.log("Is authenticated==========>",authState)
+      if(authState.action=="LOGIN_SUCCESS"){
       // Set isAuthenticated to true after successful login
       setIsAuthenticated(true);
       navigate('/dashboard', { replace: true });
+      }
     }
   }, [userInfo, navigate, setIsAuthenticated]);
 
