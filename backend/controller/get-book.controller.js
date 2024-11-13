@@ -7,23 +7,23 @@ exports.getBook = (req, res) => {
       return res.status(400).send("Request body is missing");
     }
 
-    const cacheKey = `book:${req.params.bookId}`; // Unique cache key based on bookId
+    // const cacheKey = `book:${req.params.bookId}`; // Unique cache key based on bookId
 
     // Step 1: Check Redis for cached book data
-    redis.get(cacheKey, (err1, cachedBook) => {
-      if (err1) {
-        console.error("Error checking Redis cache:", err1);
-      }
+    // redis.get(cacheKey, (err1, cachedBook) => {
+    //   if (err1) {
+    //     console.error("Error checking Redis cache:", err1);
+    //   }
 
-      if (cachedBook) {
-        // Cache hit: Return the cached book data
-        console.log("Cache hit for cachedBook:", cachedBook);
+    //   if (cachedBook) {
+    //     // Cache hit: Return the cached book data
+    //     console.log("Cache hit for cachedBook:", cachedBook);
 
-        console.log("Cache hit for book:", req.params.bookId);
-        return res.status(200).json(JSON.parse(cachedBook)); // Send cached data as response
+    //     console.log("Cache hit for book:", req.params.bookId);
+    //     return res.status(200).json(JSON.parse(cachedBook)); // Send cached data as response
 
 
-      } else {
+      // } else {
         worker(
 
           req.params,
@@ -40,8 +40,8 @@ exports.getBook = (req, res) => {
             res.end();
           }
         );
-      }
-    })
+      // }
+    // })
 
 
   } catch (error) {
