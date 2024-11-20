@@ -11,7 +11,7 @@ function SearchBooks({ userId,onAddBook }) {
   const searchBooks = async () => {
     try {
       const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`
+        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${process.env.API_KEY}`
       );
       setBooks(response.data.items);
     } catch (error) {
