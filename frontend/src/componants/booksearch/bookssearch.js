@@ -10,8 +10,10 @@ function SearchBooks({ userId,onAddBook }) {
 
   const searchBooks = async () => {
     try {
+      const apiKey = 'AIzaSyDeT5IqFA72X3H8ixLfC3xZMSuyiQyQJw4'; // No quotes in the URL
+
       const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key='AIzaSyDeT5IqFA72X3H8ixLfC3xZMSuyiQyQJw4'`
+        `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${apiKey}`
       );
       setBooks(response.data.items);
     } catch (error) {
